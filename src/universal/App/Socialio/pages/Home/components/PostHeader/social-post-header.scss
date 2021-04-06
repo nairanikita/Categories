@@ -1,0 +1,25 @@
+@import '../../../../../../vars.scss';
+.wrapper {
+  margin: 20px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  a {
+    color: $textMain;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .text {
+    color: $textBase;
+  }
+}
+
+.avatar {
+  align-items: flex-start;
+}
+
+.nameText {
+  text-overflow: initial;
+  white-space: initial;
+}

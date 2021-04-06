@@ -1,0 +1,30 @@
+@import '../../vars.scss';
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background: #FFFFFF;
+  flex-shrink: 0;
+  flex-grow: 0;
+  z-index: 100;
+  border-bottom: $borderDefault;
+  &.center {
+    justify-content: center;
+  }
+  @media #{$mediaMobile} {
+    height: 56px;
+  }
+}
+
+.pageName {
+  /* Socialio: */
+  font-weight: 500;
+  font-size: 1rem;
+  color: $textMain;
+  line-height: 1.75;
+  i {
+    color: $primary;
+    margin-right: 14px;
+  }
+}

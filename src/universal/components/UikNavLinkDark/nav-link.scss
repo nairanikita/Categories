@@ -1,0 +1,25 @@
+@import '../../vars.scss';
+.wrapperDark {
+  margin: 0 15px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-weight: 500;
+  color: white;
+  &>* {
+    color: white;
+  }
+  &:global(.active) {
+    background: $primary;
+    color: white;
+    .rightEl {
+      color: white;
+    }
+  }
+  &:not(:global(.active)):hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    box-shadow: none;
+  }
+}

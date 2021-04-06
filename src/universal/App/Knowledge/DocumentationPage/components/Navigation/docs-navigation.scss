@@ -1,0 +1,17 @@
+.wrapper {
+  z-index: 100;
+  @media screen and (max-width: 1400px) {
+    position: fixed;
+    top: 71px;
+    height: calc(100% - 70px);
+    right: 100%;
+    @media screen and (max-width: 768px) {
+      top: 57px;
+      height: calc(100% - 56px);
+    }
+    transition: .4s;
+    &.open {
+      transform: translateX(100%);
+    }
+  }
+}

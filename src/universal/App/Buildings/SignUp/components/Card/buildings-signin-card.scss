@@ -1,0 +1,57 @@
+@import '../../../../../vars.scss';
+.wrapper {
+  border: $borderDefault;
+  border-radius: 4px;
+  padding: 24px 0 18px;
+  text-align: center;
+  background: transparent;
+  outline: none !important;
+  position: relative;
+  cursor: pointer;
+  * {
+    color: $textSecondary;
+    font-weight: 500;
+  }
+
+  i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .selectedCheck {
+    font-size: .5rem;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: $primary;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translate(-50%, 50%);
+    opacity: 0;
+  }
+
+
+  &:hover, &.selected {
+    border-color: $primary;
+    * {
+      color: $primary;
+    }
+  }
+
+  &.selected {
+    box-shadow: 0 0 0 1px $primary;
+    .selectedCheck {
+      opacity: 1;
+    }
+  }
+
+
+}

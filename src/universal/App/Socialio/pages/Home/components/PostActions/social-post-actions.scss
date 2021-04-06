@@ -1,0 +1,34 @@
+@import '../../../../../../vars.scss';
+.btns {
+  display: flex;
+  justify-content: center;
+  &>button {
+    border-radius: 0;
+    font-weight: 500;
+    padding-left: 52px !important;
+    padding-right: 20px;
+    border: none !important;
+    height: 45px;
+    margin: 0 10px;
+    i {
+      margin-left: 8px;
+      color: $textBase;
+    }
+    &:first-child {
+      border-left: none !important;
+    }
+    &:hover {
+      color: $textMain;
+      border-color: #E2E5ED;
+    }
+    &>* {
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .hide {
+    display: none;
+  }
+}

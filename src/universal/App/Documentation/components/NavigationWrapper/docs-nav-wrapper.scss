@@ -1,0 +1,17 @@
+@import '../../../../vars.scss';
+.wrapper {
+  @media screen and (max-width: 1200px) {
+    z-index: 50;
+    position: fixed;
+    right: 100%;
+    top: 71px;
+    bottom: 0;
+    transition: .4s;
+    &.isMenuOpen {
+      transform: translateX(100%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    top: 57px;
+  }
+}

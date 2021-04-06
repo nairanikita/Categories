@@ -1,0 +1,17 @@
+@import '../../vars.scss';
+.wrapper {
+  /* Menu Base: */
+  background: white;
+  border-right: $borderDefault;
+  height: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 270px;
+  width: 270px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  &.positionRight {
+    border-right: none;
+    border-left: $borderDefault;
+  }
+}

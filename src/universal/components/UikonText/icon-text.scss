@@ -1,0 +1,30 @@
+@import '../../vars.scss';
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  &+& {
+    margin-left: 15px;
+  }
+  i {
+    color: $textSecondary;
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  .text {
+    color: $textSecondary;
+    font-size: 0.875rem;
+  }
+  &.textHighlight {
+    .text {
+      color: $textBase;
+    }
+  }
+  &.highlight,
+  &.highlighted,
+  &:hover {
+    i {
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@import "../../../../vars.scss";
+button.select {
+  border: none !important;
+  box-shadow: none !important;
+  * {
+    font-weight: 600;
+  }
+}
+
+.selectWrapper {
+  margin-left: 2rem;
+  @media screen and (min-width: 1201px) {
+    display: none;
+  }
+}
+
+.links,
+.btnPreviews,
+.divider {
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.btnMenu {
+  display: none;
+}
+
+.btnMenu.hasMenu {
+  display: none;
+  background: white !important;
+  width: 70px;
+  flex-basis: 70px;
+  flex-shrink: 0;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none !important;
+  border: none !important;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  @media screen and (max-width: 1200px) {
+    height: 70px;
+    width: 70px;
+    flex-basis: 70px;
+    display: flex;
+    &+* {
+      @media screen and (max-width: 1200px) {
+        margin-left: 60px;
+      }
+      @media screen and (max-width: 768px) {
+        margin-left: 46px;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    height: 56px;
+    width: 56px;
+    flex-basis: 56px;
+  }
+  border-right: $borderDefault !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.selectSection {
+  padding-left: 0;
+  padding-right: 1rem;
+}

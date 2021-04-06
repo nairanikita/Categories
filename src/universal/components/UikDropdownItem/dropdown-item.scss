@@ -1,0 +1,21 @@
+.wrapper,
+.wrapper:focus {
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-radius: 0;
+  font-size: 0.875rem;
+  min-width: 100%;
+  min-height: 38px;
+  text-align: left;
+  background: white;
+  &:last-child {
+    border-bottom: none !important;
+  }
+  &:hover {
+    background: #F6F7F9;
+  }
+  &>* {
+    justify-content: flex-start !important;
+  }
+}

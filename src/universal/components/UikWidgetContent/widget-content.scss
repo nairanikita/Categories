@@ -1,0 +1,10 @@
+@import '../../vars.scss';
+.wrapper {
+  padding: 25px 30px;
+  &+& {
+    border-top: $borderDefault;
+  }
+  &.grey {
+    background-color: $bg;
+  }
+}

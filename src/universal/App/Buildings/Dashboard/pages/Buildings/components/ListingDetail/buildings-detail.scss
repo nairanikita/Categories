@@ -1,0 +1,145 @@
+@import '../../../../../../../vars.scss';
+.wrapper {
+  background: white;
+}
+
+.buildingsImage {
+  flex-basis: 50%;
+  height: 330px;
+  @include backgroundCover();
+  border-radius: 4px;
+  &>* {
+    min-width: 1px;
+  }
+}
+
+.detailMain {
+  flex-basis: 475px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.detailMisc {
+  flex-basis: 285px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailWrapper {
+  display: block;
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    display: flex;
+    &>* {
+      min-width: 1px;
+    }
+  }
+  @media screen and (min-width: 1601px) {
+    display: flex;
+    &>* {
+      min-width: 1px;
+    }
+  }
+}
+
+.name {
+  font-weight: 400;
+  font-size: 1.625rem;
+  line-height: 2.375rem;
+  margin-top: .5rem;
+}
+
+.description {
+  color: $textBase;
+  margin-top: .75rem;
+}
+
+.propertyTable {
+  margin: .6rem 0;
+  width: 100%;
+  td {
+    padding: .375rem 0;
+    font-size: .875rem;
+    line-height: 1.375rem;
+    color: $textBase; // icon
+    i {
+      margin-right: .5rem;
+      color: $textSecondary;
+    }
+  }
+  td:last-child {
+    color: $textMain;
+    text-align: right;
+  }
+}
+
+.sectionPhotos {
+  padding-top: 1rem;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 1rem -5px;
+  .galleryImage {
+    @include backgroundCover();
+    min-width: 1px;
+    flex-basis: calc(50% - 10px);
+    height: 100px;
+    border-radius: 4px;
+    margin: 5px;
+  }
+}
+
+.searchReviewsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.125rem 0;
+  border-top: $borderDefault;
+  border-bottom: $borderDefault;
+  .searchTotal {
+    color: $textMain;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+}
+
+.ratingTable {
+  padding: 1rem 0;
+  border-bottom: $borderDefault;
+  &+* {
+    margin-top: 1rem;
+  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -15px;
+  margin-right: -15px;
+  .ratingItem {
+    min-width: 1px;
+    flex-basis: calc(50% - 30px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 7px 15px;
+    .ratingProperty {
+      font-size: .875rem;
+    }
+  }
+}
+
+.userRatingWrapper {
+  margin-top: .5rem;
+  &+* {
+    margin-top: 1rem;
+  }
+}
+
+.userRatingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .875rem;
+}

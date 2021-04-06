@@ -1,0 +1,38 @@
+.headerActions {
+  display: flex;
+  &>*:not(:last-child) {
+    margin-right: 10px;
+  }
+  @media screen and (max-width: 512px) {
+    display: none;
+  }
+}
+
+.miniChartContainer {
+  display: flex;
+  flex-wrap: wrap;
+  .miniChart {
+    flex-basis: calc(25% - 30px);
+    min-width: 1px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    @media screen and (max-width: 1200px) {
+      flex-basis: calc(50% - 30px);
+    }
+    @media screen and (max-width: 512px) {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+  &>* {
+    flex-basis: 350px;
+    flex-grow: 1;
+  }
+  .widgetMostVisited {
+    flex-basis: 730px;
+  }
+}

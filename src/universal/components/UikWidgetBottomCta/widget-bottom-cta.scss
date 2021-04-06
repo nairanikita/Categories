@@ -1,0 +1,16 @@
+@import '../../vars.scss';
+.wrapper {
+  height: 50px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $textSecondary;
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: 500;
+  border-top: $borderDefault;
+  &:hover {
+    color: $textMain;
+  }
+}

@@ -1,0 +1,27 @@
+[ignore]
+./build/*
+.*/node_modules/.*
+./public/*
+./.vscode/*
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.file_ext=.scss
+module.name_mapper.extension='css' -> 'empty/object'
+module.name_mapper.extension='scss' -> 'empty/object'
+module.name_mapper='^@redux' ->'<PROJECT_ROOT>/src/universal/redux'
+module.name_mapper='^@components' ->'<PROJECT_ROOT>/src/universal/components'
+module.name_mapper='^@exampleAssets' ->'<PROJECT_ROOT>/src/universal/exampleAssets'
+module.name_mapper='^@componentWrappers' ->'<PROJECT_ROOT>/src/universal/componentWrappers'
+module.name_mapper='^@components' ->'<PROJECT_ROOT>/src/universal/components'
+module.name_mapper='^@lib' ->'<PROJECT_ROOT>/src/universal/lib'
+module.name_mapper='^@components' ->'<PROJECT_ROOT>/src/universal/components'
+[strict]

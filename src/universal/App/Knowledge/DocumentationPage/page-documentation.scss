@@ -1,0 +1,33 @@
+.container {
+  .mainContent {
+    flex-basis: 60%;
+  }
+  .codeContent {
+    flex-basis: 30%;
+  }
+  .mainContent,
+  .codeContent {
+    transition: .5s;
+  }
+  @media screen and (max-width: 1200px) {
+    overflow: hidden;
+    .mainContent,
+    .codeContent {
+      width: 100%;
+      flex-basis: 100%;
+      flex-shrink: 0;
+    } // responsive positioning
+    .mainContent {
+      transform: translateX(-100%);
+    }
+    .codeContent {
+      transform: translateX(0);
+    }
+    .mainContent.active {
+      transform: translateX(0);
+    }
+    .codeContent.active {
+      transform: translateX(-100%);
+    }
+  }
+}

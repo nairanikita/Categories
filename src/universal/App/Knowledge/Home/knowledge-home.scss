@@ -1,0 +1,44 @@
+.content {
+  flex-direction: row;
+  &>*:first-child {
+    flex-basis: 600px;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+  &>*:last-child {
+    flex-basis: 380px;
+    flex-shrink: 0;
+  }
+}
+
+.menuWrapper {
+  @media screen and (max-width: 1024px) {
+    position: fixed;
+    top: 70px;
+    height: calc(100% - 70px);
+    width: 100%;
+    left: 0;
+    background: white;
+    padding: 15px;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    &>* {
+      max-width: 512px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media screen and (max-width: 768px) {
+      top: 57px;
+      height: calc(100% - 57px);
+    }
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(.9);
+    transition: .4s;
+    &.open {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

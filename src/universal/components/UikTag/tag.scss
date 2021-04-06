@@ -1,0 +1,43 @@
+@import '../../vars.scss';
+.wrapper {
+  border-radius: 4px;
+  /* ADMIN: */
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 18px;
+  display: inline-flex;
+  align-items: center;
+  border: $borderDefault;
+  color: $textSecondary;
+  font-weight: 500;
+  padding: 0 7px;
+  height: 24px;
+  &:not(.fill) {
+    @each $name,
+    $color in $colorPairs {
+      &:global(.#{$name}) {
+        border: 1px solid $color;
+        color: $color;
+      }
+    }
+    &:global(.white) {
+      border: 1px solid white;
+      color: white;
+    }
+  }
+  &.fill {
+    @each $name,
+    $color in $colorPairs {
+      &:global(.#{$name}) {
+        background: $color;
+        border: 1px solid $color;
+        color: white;
+      }
+    }
+    &:global(.white) {
+      background: white;
+      color: black;
+    }
+  }
+}

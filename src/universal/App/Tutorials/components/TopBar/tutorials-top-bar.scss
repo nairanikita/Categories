@@ -1,0 +1,46 @@
+@import "../../../../vars.scss";
+@media screen and (max-width: 1200px) {
+  .divider,
+  .links {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .divider2,
+  .actions,
+  .goPremiumBtn {
+    display: none;
+  }
+}
+
+.btnFilter,
+.btnMenu {
+  display: none;
+  background: white !important;
+  width: 70px;
+  flex-basis: 70px;
+  flex-shrink: 0;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none !important;
+  border: none !important;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  @media screen and (max-width: 1200px) {
+    display: flex;
+  }
+  @media screen and (max-width: 768px) {
+    height: 56px;
+    flex-basis: 56px;
+  }
+}
+
+.btnFilter {
+  border-left: $borderDefault !important;
+}
+
+.btnMenu {
+  border-right: $borderDefault !important;
+}

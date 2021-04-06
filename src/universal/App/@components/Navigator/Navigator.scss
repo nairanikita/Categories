@@ -1,0 +1,50 @@
+@import '../../../vars.scss';
+.wrapper {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100000;
+}
+
+.expandButton {
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: $bgDark;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  transition: .3s all;
+  cursor: pointer;
+  &:hover {
+    background: lighten($bgDark, 5%);
+    color: rgba(255, 255, 255, 0.9);
+  }
+  &.isExpanded {
+    color: white;
+    border-radius: 4px 50% 50% 50%;
+  }
+}
+
+.list {
+  border-radius: 4px;
+  position: absolute;
+  bottom: 52px;
+  right: 52px;
+  background: $bgDark;
+  padding: 15px 0;
+  transition: .3s all;
+  width: 200px;
+  transform: translate(7px, 7px);
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  &.isExpanded {
+    transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+}

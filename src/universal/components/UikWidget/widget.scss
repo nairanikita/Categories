@@ -1,0 +1,25 @@
+@import '../../vars.scss';
+.wrapper {
+  border: $borderDefault;
+  box-shadow: $boxShadow;
+  border-radius: 4px;
+  background: #FFFFFF;
+  display: block;
+  &.padding {
+    padding: 30px;
+  }
+  &.margin {
+    margin: 15px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}

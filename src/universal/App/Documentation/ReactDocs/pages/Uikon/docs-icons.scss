@@ -1,0 +1,29 @@
+@import "../../../../../vars.scss";
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: $borderDefault;
+  padding: 25px 30px;
+  &>* {
+    flex-basis: 250px;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  height: 90px;
+  align-items: center;
+}
+
+.icon {
+  flex-basis: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.ligature {
+  font-size: .875rem;
+  color: $textSecondary;
+}

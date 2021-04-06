@@ -1,0 +1,70 @@
+@import '../../../../../vars.scss';
+.subNav {
+  flex-basis: 380px;
+  min-width: 350px;
+}
+
+.profilePic {
+  padding-top: 300px;
+  @include backgroundCover();
+}
+
+.userMeta {
+  h2 {
+    font-size: 1.375rem;
+    font-weight: 500;
+  }
+}
+
+.userMenu {
+  a span {
+    color: $textBase;
+  }
+  a:global(.active) span {
+    color: white;
+  }
+}
+
+.progress {
+  p {
+    color: $textBase;
+  }
+  .progressBar {
+    flex-basis: 200px;
+    width: 200px;
+    margin-top: .3rem;
+  }
+  @media screen and (min-width: 980px) {
+    display: flex;
+    align-items: center;
+    &>* {
+      flex-shrink: 0;
+      margin: 0;
+    }
+    .progressBar {
+      margin-left: 20px;
+      margin-top: 0;
+    }
+  }
+}
+
+.selectFlag {
+  margin-right: 10px;
+  transform: translateX(-3px);
+  height: 14px;
+  box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+.splitContent {
+  display: flex;
+  @media screen and (max-width: 1050px) {
+    flex-wrap: wrap;
+    .subNav {
+      flex-grow: 1;
+    }
+    .profilePic {
+      padding-top: 300px;
+      @include backgroundCover();
+    }
+  }
+}

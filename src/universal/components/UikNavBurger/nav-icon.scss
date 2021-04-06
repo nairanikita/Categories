@@ -1,0 +1,49 @@
+@import '../../vars.scss';
+.wrapper {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  color: $textSecondary;
+  .a,
+  .b,
+  .c {
+    position: absolute;
+    fill: currentColor;
+    transform: rotate(0);
+    transition: .2s top .4s, .1s left .2s, .2s transform, .2s opacity .2s;
+  }
+  .a {
+    left: 0;
+    top: 2px;
+  }
+  .b {
+    top: 9px;
+    left: 0;
+  }
+  .c {
+    left: 6px;
+    top: 16px;
+  }
+  &.isOpen {
+    .a,
+    .b,
+    .c {
+      transition: .2s opacity, .2s top, .2s left .2s, .2s transform .4s;
+    }
+    .a,
+    .c {
+      right: auto;
+      left: 3px;
+      top: 9px;
+    }
+    .b {
+      opacity: 0;
+    }
+    .a {
+      transform: rotate(-45deg);
+    }
+    .c {
+      transform: rotate(45deg);
+    }
+  }
+}

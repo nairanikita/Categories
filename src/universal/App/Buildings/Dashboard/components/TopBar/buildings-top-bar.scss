@@ -1,0 +1,45 @@
+@import '../../../../../vars.scss';
+.selectFlag {
+  margin-right: 10px;
+  transform: translateX(-3px);
+  height: 14px;
+  box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+.actions {
+  height: 38px;
+  @media screen and (max-width: 768px) {
+    .actionMobileHidden {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
+}
+
+.wrapper {
+  position: relative;
+  @media screen and (max-width: 400px) {
+    justify-content: flex-end;
+  }
+  .menuButton {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .menuButton {
+      display: block;
+      position: absolute;
+      border-radius: 0;
+      border: none !important;
+      border-right: $borderDefault !important;
+      width: 56px;
+      height: 56px;
+      left: 0;
+      top: 0;
+      font-weight: 600;
+      box-shadow: none;
+    }
+    padding-left: 56px;
+  }
+}
