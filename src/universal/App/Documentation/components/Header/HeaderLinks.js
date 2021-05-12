@@ -23,11 +23,6 @@ const headerLinks = [
     to: '/docs/react',
   },
   {
-    text: 'Support',
-    to: '/docs/support',
-    exact: true,
-  },
-  {
     text: 'Changelog',
     to: '/docs/changelog',
     exact: true,

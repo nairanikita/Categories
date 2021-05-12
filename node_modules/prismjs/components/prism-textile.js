@@ -1,22 +1,7 @@
-(function (Prism) {
+(function(Prism) {
 	// We don't allow for pipes inside parentheses
 	// to not break table pattern |(. foo |). bar |
-	var modifierRegex = /\([^|()\n]+\)|\[[^\]\n]+\]|\{[^}\n]+\}/.source;
-	// Opening and closing parentheses which are not a modifier
-	// This pattern is necessary to prevent exponential backtracking
-	var parenthesesRegex = /\)|\((?![^|()\n]+\))/.source;
-	/**
-	 * @param {string} source
-	 * @param {string} [flags]
-	 */
-	function withModifier(source, flags) {
-		return RegExp(
-			source
-				.replace(/<MOD>/g, function () { return '(?:' + modifierRegex + ')'; })
-				.replace(/<PAR>/g, function () { return '(?:' + parenthesesRegex + ')'; }),
-			flags || '');
-	}
-
+	var modifierRegex = '(?:\\([^|)]+\\)|\\[[^\\]]+\\]|\\{[^}]+\\})+';
 	var modifierTokens = {
 		'css': {
 			pattern: /\{[^}]+\}/,
@@ -39,7 +24,7 @@
 	};
 
 
-	var textile = Prism.languages.textile = Prism.languages.extend('markup', {
+	Prism.languages.textile = Prism.languages.extend('markup', {
 		'phrase': {
 			pattern: /(^|\r|\n)\S[\s\S]*?(?=$|\r?\n\r?\n|\r\r)/,
 			lookbehind: true,
@@ -47,10 +32,10 @@
 
 				// h1. Header 1
 				'block-tag': {
-					pattern: withModifier(/^[a-z]\w*(?:<MOD>|<PAR>|[<>=])*\./.source),
+					pattern: RegExp('^[a-z]\\w*(?:' + modifierRegex + '|[<>=()])*\\.'),
 					inside: {
 						'modifier': {
-							pattern: withModifier(/(^[a-z]\w*)(?:<MOD>|<PAR>|[<>=])+(?=\.)/.source),
+							pattern: RegExp('(^[a-z]\\w*)(?:' + modifierRegex + '|[<>=()])+(?=\\.)'),
 							lookbehind: true,
 							inside: modifierTokens
 						},
@@ -62,10 +47,10 @@
 				// # List item
 				// * List item
 				'list': {
-					pattern: withModifier(/^[*#]+<MOD>*\s+\S.*/.source, 'm'),
+					pattern: RegExp('^[*#]+(?:' + modifierRegex + ')?\\s+.+', 'm'),
 					inside: {
 						'modifier': {
-							pattern: withModifier(/(^[*#]+)<MOD>+/.source),
+							pattern: RegExp('(^[*#]+)' + modifierRegex),
 							lookbehind: true,
 							inside: modifierTokens
 						},
@@ -77,12 +62,12 @@
 				'table': {
 					// Modifiers can be applied to the row: {color:red}.|1|2|3|
 					// or the cell: |{color:red}.1|2|3|
-					pattern: withModifier(/^(?:(?:<MOD>|<PAR>|[<>=^~])+\.\s*)?(?:\|(?:(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+\.|(?!(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+\.))[^|]*)+\|/.source, 'm'),
+					pattern: RegExp('^(?:(?:' + modifierRegex + '|[<>=()^~])+\\.\\s*)?(?:\\|(?:(?:' + modifierRegex + '|[<>=()^~_]|[\\\\/]\\d+)+\\.)?[^|]*)+\\|', 'm'),
 					inside: {
 						'modifier': {
 							// Modifiers for rows after the first one are
 							// preceded by a pipe and a line feed
-							pattern: withModifier(/(^|\|(?:\r?\n|\r)?)(?:<MOD>|<PAR>|[<>=^~_]|[\\/]\d+)+(?=\.)/.source),
+							pattern: RegExp('(^|\\|(?:\\r?\\n|\\r)?)(?:' + modifierRegex + '|[<>=()^~_]|[\\\\/]\\d+)+(?=\\.)'),
 							lookbehind: true,
 							inside: modifierTokens
 						},
@@ -91,57 +76,56 @@
 				},
 
 				'inline': {
-					pattern: withModifier(/(^|[^a-zA-Z\d])(\*\*|__|\?\?|[*_%@+\-^~])<MOD>*.+?\2(?![a-zA-Z\d])/.source),
-					lookbehind: true,
+					pattern: RegExp('(\\*\\*|__|\\?\\?|[*_%@+\\-^~])(?:' + modifierRegex + ')?.+?\\1'),
 					inside: {
 						// Note: superscripts and subscripts are not handled specifically
 
 						// *bold*, **bold**
 						'bold': {
-							pattern: withModifier(/(^(\*\*?)<MOD>*).+?(?=\2)/.source),
+							pattern: RegExp('(^(\\*\\*?)(?:' + modifierRegex + ')?).+?(?=\\2)'),
 							lookbehind: true
 						},
 
 						// _italic_, __italic__
 						'italic': {
-							pattern: withModifier(/(^(__?)<MOD>*).+?(?=\2)/.source),
+							pattern: RegExp('(^(__?)(?:' + modifierRegex + ')?).+?(?=\\2)'),
 							lookbehind: true
 						},
 
 						// ??cite??
 						'cite': {
-							pattern: withModifier(/(^\?\?<MOD>*).+?(?=\?\?)/.source),
+							pattern: RegExp('(^\\?\\?(?:' + modifierRegex + ')?).+?(?=\\?\\?)'),
 							lookbehind: true,
 							alias: 'string'
 						},
 
 						// @code@
 						'code': {
-							pattern: withModifier(/(^@<MOD>*).+?(?=@)/.source),
+							pattern: RegExp('(^@(?:' + modifierRegex + ')?).+?(?=@)'),
 							lookbehind: true,
 							alias: 'keyword'
 						},
 
 						// +inserted+
 						'inserted': {
-							pattern: withModifier(/(^\+<MOD>*).+?(?=\+)/.source),
+							pattern: RegExp('(^\\+(?:' + modifierRegex + ')?).+?(?=\\+)'),
 							lookbehind: true
 						},
 
 						// -deleted-
 						'deleted': {
-							pattern: withModifier(/(^-<MOD>*).+?(?=-)/.source),
+							pattern: RegExp('(^-(?:' + modifierRegex + ')?).+?(?=-)'),
 							lookbehind: true
 						},
 
 						// %span%
 						'span': {
-							pattern: withModifier(/(^%<MOD>*).+?(?=%)/.source),
+							pattern: RegExp('(^%(?:' + modifierRegex + ')?).+?(?=%)'),
 							lookbehind: true
 						},
 
 						'modifier': {
-							pattern: withModifier(/(^\*\*|__|\?\?|[*_%@+\-^~])<MOD>+/.source),
+							pattern: RegExp('(^\\*\\*|__|\\?\\?|[*_%@+\\-^~])' + modifierRegex),
 							lookbehind: true,
 							inside: modifierTokens
 						},
@@ -168,14 +152,14 @@
 				// "text":http://example.com
 				// "text":link-ref
 				'link': {
-					pattern: withModifier(/"<MOD>*[^"]+":.+?(?=[^\w/]?(?:\s|$))/.source),
+					pattern: RegExp('"(?:' + modifierRegex + ')?[^"]+":.+?(?=[^\\w/]?(?:\\s|$))'),
 					inside: {
 						'text': {
-							pattern: withModifier(/(^"<MOD>*)[^"]+(?=")/.source),
+							pattern: RegExp('(^"(?:' + modifierRegex + ')?)[^"]+(?=")'),
 							lookbehind: true
 						},
 						'modifier': {
-							pattern: withModifier(/(^")<MOD>+/.source),
+							pattern: RegExp('(^")' + modifierRegex),
 							lookbehind: true,
 							inside: modifierTokens
 						},
@@ -190,15 +174,15 @@
 				// !image.jpg!
 				// !image.jpg(Title)!:http://example.com
 				'image': {
-					pattern: withModifier(/!(?:<MOD>|<PAR>|[<>=])*(?![<>=])[^!\s()]+(?:\([^)]+\))?!(?::.+?(?=[^\w/]?(?:\s|$)))?/.source),
+					pattern: RegExp('!(?:' + modifierRegex + '|[<>=()])*[^!\\s()]+(?:\\([^)]+\\))?!(?::.+?(?=[^\\w/]?(?:\\s|$)))?'),
 					inside: {
 						'source': {
-							pattern: withModifier(/(^!(?:<MOD>|<PAR>|[<>=])*)(?![<>=])[^!\s()]+(?:\([^)]+\))?(?=!)/.source),
+							pattern: RegExp('(^!(?:' + modifierRegex + '|[<>=()])*)[^!\\s()]+(?:\\([^)]+\\))?(?=!)'),
 							lookbehind: true,
 							alias: 'url'
 						},
 						'modifier': {
-							pattern: withModifier(/(^!)(?:<MOD>|<PAR>|[<>=])+/.source),
+							pattern: RegExp('(^!)(?:' + modifierRegex + '|[<>=()])+'),
 							lookbehind: true,
 							inside: modifierTokens
 						},
@@ -236,41 +220,38 @@
 					pattern: /\b\((?:TM|R|C)\)/,
 					alias: 'comment',
 					inside: {
-						'punctuation': /[()]/
+						'punctuation':/[()]/
 					}
 				}
 			}
 		}
 	});
 
-	var phraseInside = textile['phrase'].inside;
 	var nestedPatterns = {
-		'inline': phraseInside['inline'],
-		'link': phraseInside['link'],
-		'image': phraseInside['image'],
-		'footnote': phraseInside['footnote'],
-		'acronym': phraseInside['acronym'],
-		'mark': phraseInside['mark']
+		'inline': Prism.languages.textile['phrase'].inside['inline'],
+		'link': Prism.languages.textile['phrase'].inside['link'],
+		'image': Prism.languages.textile['phrase'].inside['image'],
+		'footnote': Prism.languages.textile['phrase'].inside['footnote'],
+		'acronym': Prism.languages.textile['phrase'].inside['acronym'],
+		'mark': Prism.languages.textile['phrase'].inside['mark']
 	};
 
 	// Only allow alpha-numeric HTML tags, not XML tags
-	textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i;
+	Prism.languages.textile.tag.pattern = /<\/?(?!\d)[a-z0-9]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i;
 
 	// Allow some nesting
-	var phraseInlineInside = phraseInside['inline'].inside;
-	phraseInlineInside['bold'].inside = nestedPatterns;
-	phraseInlineInside['italic'].inside = nestedPatterns;
-	phraseInlineInside['inserted'].inside = nestedPatterns;
-	phraseInlineInside['deleted'].inside = nestedPatterns;
-	phraseInlineInside['span'].inside = nestedPatterns;
+	Prism.languages.textile['phrase'].inside['inline'].inside['bold'].inside = nestedPatterns;
+	Prism.languages.textile['phrase'].inside['inline'].inside['italic'].inside = nestedPatterns;
+	Prism.languages.textile['phrase'].inside['inline'].inside['inserted'].inside = nestedPatterns;
+	Prism.languages.textile['phrase'].inside['inline'].inside['deleted'].inside = nestedPatterns;
+	Prism.languages.textile['phrase'].inside['inline'].inside['span'].inside = nestedPatterns;
 
 	// Allow some styles inside table cells
-	var phraseTableInside = phraseInside['table'].inside;
-	phraseTableInside['inline'] = nestedPatterns['inline'];
-	phraseTableInside['link'] = nestedPatterns['link'];
-	phraseTableInside['image'] = nestedPatterns['image'];
-	phraseTableInside['footnote'] = nestedPatterns['footnote'];
-	phraseTableInside['acronym'] = nestedPatterns['acronym'];
-	phraseTableInside['mark'] = nestedPatterns['mark'];
+	Prism.languages.textile['phrase'].inside['table'].inside['inline'] = nestedPatterns['inline'];
+	Prism.languages.textile['phrase'].inside['table'].inside['link'] = nestedPatterns['link'];
+	Prism.languages.textile['phrase'].inside['table'].inside['image'] = nestedPatterns['image'];
+	Prism.languages.textile['phrase'].inside['table'].inside['footnote'] = nestedPatterns['footnote'];
+	Prism.languages.textile['phrase'].inside['table'].inside['acronym'] = nestedPatterns['acronym'];
+	Prism.languages.textile['phrase'].inside['table'].inside['mark'] = nestedPatterns['mark'];
 
 }(Prism));

@@ -34,19 +34,6 @@ const TutorialsHeader = () => (
         >
           Documentation
         </UikButton>
-        <UikButton
-          className={ cls.btnBuy }
-          Component="a"
-          href="https://janlosert.com/store/dashboard-ui-kit-3.html?from=preview"
-          icon={ (
-            <Uikon>
-              rocket
-            </Uikon>
-          ) }
-          primary
-        >
-          Download Kit
-        </UikButton>
       </UikFormInputGroup>
     </UikTopBarSection>
   </UikTopBar>

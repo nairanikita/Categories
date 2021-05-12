@@ -110,25 +110,6 @@ class Navigator extends React.PureComponent<NavigatorType> {
           >
             Changelog
           </UikNavLinkDark>
-          <UikNavLinkDark
-            Component={ Link }
-            icon={
-              <Uikon>lightbulb</Uikon>
-            }
-            to="/docs/support"
-          >
-            Support
-          </UikNavLinkDark>
-          <UikNavLinkDark
-            className="active"
-            href="https://janlosert.com/store/dashboard-ui-kit-3.html?from=docs"
-            icon={
-              <Uikon>love</Uikon>
-            }
-          >
-Download kit
-
-          </UikNavLinkDark>
         </div>
       </Component>
     )

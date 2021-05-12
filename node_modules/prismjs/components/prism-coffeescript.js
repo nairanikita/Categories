@@ -58,11 +58,7 @@ Prism.languages.insertBefore('coffeescript', 'string', {
 				pattern: /^`|`$/,
 				alias: 'punctuation'
 			},
-			'script': {
-				pattern: /[\s\S]+/,
-				alias: 'language-javascript',
-				inside: Prism.languages.javascript
-			}
+			rest: Prism.languages.javascript
 		}
 	},
 
@@ -92,5 +88,4 @@ Prism.languages.insertBefore('coffeescript', 'keyword', {
 
 delete Prism.languages.coffeescript['template-string'];
 
-Prism.languages.coffee = Prism.languages.coffeescript;
 }(Prism));

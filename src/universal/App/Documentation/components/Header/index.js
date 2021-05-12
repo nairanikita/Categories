@@ -104,18 +104,6 @@ class DocsTopBar extends React.Component<{
             >
               Screen Previews
             </UikButton>
-            <UikButton
-              Component="a"
-              href="https://janlosert.com/store/dashboard-ui-kit-3.html?from=preview"
-              icon={ (
-                <Uikon>
-                rocket
-                </Uikon>
-            ) }
-              primary
-            >
-        Download Kit
-            </UikButton>
           </UikFormInputGroup>
         </UikTopBarSection>
       </UikTopBar>
