@@ -5,6 +5,7 @@ import Documentation from './Documentation'
 import Analytics from './Analytics'
 import AppDirectory from './AppDirectory'
 import Buildings from './Buildings'
+import Categories from './Categories'
 
 const AsyncRouteMap = {
   Tutorials,
@@ -14,6 +15,7 @@ const AsyncRouteMap = {
   Analytics,
   AppDirectory,
   Buildings,
+  Categories,
 }
 
 export default AsyncRouteMap

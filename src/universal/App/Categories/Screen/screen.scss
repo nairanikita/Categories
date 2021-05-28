@@ -1,0 +1,44 @@
+@import '../../../vars';
+
+.pageWrapper {
+  background-color: $bg;
+  align-items: center;
+  height: 100vh;
+}
+.pageTitle {
+  margin: 60px auto 30px;
+  justify-content: center;
+  align-items: center;
+  //background-color: burlywood;
+}
+.horizontal {
+  color: blanchedalmond;
+  // height: 200px !important;
+  // background-color: aquamarine;
+}
+.vertical {
+  margin-top: 40px !important;
+  margin-bottom: 120px !important;
+  justify-content: center;
+  // background-color: black;
+  margin: 10px;
+}
+.widget {
+  box-shadow: 5px 5px 50px 5px rgba(207, 206, 206, 0.808);
+  width: 200px;
+  // background-color: brown;
+  margin: 0 10px 0 10px;
+  height: 100px;
+  padding: 10px;
+}
+.widgetTitle {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  text-align: center !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: medium;
+
+  margin: 10px;
+  //background-color: cornflowerblue;
+}
